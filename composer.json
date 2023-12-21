@@ -1,0 +1,8 @@
+{
+    "name": "fsn/hinario",
+    "autoload": {
+        "psr-4": {
+            "app\\": "app/"
+        }
+    }
+}
