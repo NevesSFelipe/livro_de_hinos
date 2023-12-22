@@ -10,4 +10,4 @@
 
     define("METODO_PADRAO", "index");
 
-    define("URL_BASE", "index.php");
+    define("URL_BASE", "http://localhost/github/hinario");
