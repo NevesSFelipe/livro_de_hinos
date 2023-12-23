@@ -17,12 +17,12 @@
             $this->carregarView("index/listar_hinos");
         }
 
-        public function retornar_lista_hinos_js(string $grupo_hino)
+        public function retornar_lista_hinos_js(string $grupo_hino, string $string_busca)
         {
             $dados['nome_grupo'] = strtoupper(str_replace("_", " ", $grupo_hino));
 
             $model = new IndexModel;
-            $dados['hinos'] = $model->listar_hinos($grupo_hino);
+            $dados['hinos'] = $model->listar_hinos($grupo_hino, $string_busca);
 
             $retornoJS = [
                 "status" => 200,

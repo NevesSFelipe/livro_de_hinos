@@ -1,5 +1,6 @@
 let titulo_hino;
 let dropdown_hinos;
+let pesquisar_hino;
 
 document.addEventListener("DOMContentLoaded", function(e) {
     mapear_DOM();
@@ -9,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
 function mapear_DOM() {
     titulo_hino = document.getElementById("titulo_hino");
     dropdown_hinos = document.getElementById("dropdown_hinos");
+    pesquisar_hino = document.getElementById("pesquisar_hino");
 }
 
 async function listar_hinos() {
@@ -16,9 +18,12 @@ async function listar_hinos() {
     let urlAtual = window.location.href;
     let arrayURLAtual = urlAtual.split("/");
     let grupo_hino = arrayURLAtual[ (arrayURLAtual.length) - 1 ];
-    
-    const apiUrl = `../retornar_lista_hinos_js/${grupo_hino}`;
 
+    let string_busca = pesquisar_hino.value;
+    string_busca = string_busca == "" ? "1" : string_busca; 
+
+    const apiUrl = `../retornar_lista_hinos_js/${grupo_hino}/${string_busca}`;
+    
     const options = {
         method: 'GET',
         headers: {
@@ -46,9 +51,9 @@ async function listar_hinos() {
                 html +=
 
                     `<div class="card mb-3">
-                        <div class="card-header bg-dark" id="heading_${data.msgs.hinos[key]["id_hino"]}">
+                        <div class="card-header bg-dark" id="heading_${data.msgs.hinos[key]["id_hino"]}" data-toggle="collapse" data-target="#collapse_${data.msgs.hinos[key]["id_hino"]}" aria-expanded="true" aria-controls="collapse_${data.msgs.hinos[key]["id_hino"]}">
                             <h2 class="mb-0">
-                                <button class="btn" type="button" data-toggle="collapse" data-target="#collapse_${data.msgs.hinos[key]["id_hino"]}" aria-expanded="true" aria-controls="collapse_${data.msgs.hinos[key]["id_hino"]}">
+                                <button class="btn" type="button">
                                     <h5 class="text-info">${data.msgs.hinos[key]["titulo_hino"]}</h5>
                                 </button>
                             </h2>

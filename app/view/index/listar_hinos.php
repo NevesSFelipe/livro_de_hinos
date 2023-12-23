@@ -11,6 +11,8 @@
         <div class="container mt-3 text-center">
 
             <h1 id="titulo_hino"></h1>
+
+            <input onkeyup="listar_hinos()" id="pesquisar_hino" class="form-control w-100 mb-3" type="text" placeholder="Pesquisa o hino por número do hino, titulo ou letra">
             
             <div class="accordion" id="dropdown_hinos">
                 <!-- itens listados dinamicamentes pela função listar_hinos -->

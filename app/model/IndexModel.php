@@ -6,8 +6,17 @@
 
     class IndexModel {
 
-        public function listar_hinos(string $grupo_hino)
+        public function listar_hinos(string $grupo_hino, string $string_busca)
         {
+
+
+            if($string_busca !== "1") {
+
+                $sql = "SELECT * FROM $grupo_hino WHERE titulo_hino LIKE '%$string_busca%' OR letra_hino LIKE '%$string_busca%'";
+                $model = new Model;
+                return $model->buscar_registros($sql);
+            }
+
             $sql = "SELECT * FROM $grupo_hino";
             $model = new Model;
             return $model->buscar_registros($sql);
