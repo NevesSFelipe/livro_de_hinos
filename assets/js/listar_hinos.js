@@ -53,10 +53,10 @@ async function listar_hinos() {
                 html +=
 
                     `<div class="card mb-3">
-                        <div class="card-header bg-dark" id="heading_${data.msgs.hinos[key]["id_hino"]}" data-toggle="collapse" data-target="#collapse_${data.msgs.hinos[key]["id_hino"]}" aria-expanded="true" aria-controls="collapse_${data.msgs.hinos[key]["id_hino"]}">
+                        <div class="card-header" id="heading_${data.msgs.hinos[key]["id_hino"]}" data-toggle="collapse" data-target="#collapse_${data.msgs.hinos[key]["id_hino"]}" aria-expanded="true" aria-controls="collapse_${data.msgs.hinos[key]["id_hino"]}">
                             <h2 class="mb-0">
                                 <button class="btn" type="button">
-                                    <h5 class="h5_titulo_hino text-info">${data.msgs.hinos[key]["titulo_hino"]}</h5>
+                                    <h5 class="h5_titulo_hino">${data.msgs.hinos[key]["titulo_hino"]}</h5>
                                 </button>
                             </h2>
                         </div>
