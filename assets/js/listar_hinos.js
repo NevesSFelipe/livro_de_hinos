@@ -1,6 +1,8 @@
 let titulo_hino;
 let dropdown_hinos;
 let pesquisar_hino;
+let tamanho_fonte_h5 = 1.25;
+let tamanho_fonte_div = 16;
 
 document.addEventListener("DOMContentLoaded", function(e) {
     mapear_DOM();
@@ -54,7 +56,7 @@ async function listar_hinos() {
                         <div class="card-header bg-dark" id="heading_${data.msgs.hinos[key]["id_hino"]}" data-toggle="collapse" data-target="#collapse_${data.msgs.hinos[key]["id_hino"]}" aria-expanded="true" aria-controls="collapse_${data.msgs.hinos[key]["id_hino"]}">
                             <h2 class="mb-0">
                                 <button class="btn" type="button">
-                                    <h5 class="text-info">${data.msgs.hinos[key]["titulo_hino"]}</h5>
+                                    <h5 class="h5_titulo_hino text-info">${data.msgs.hinos[key]["titulo_hino"]}</h5>
                                 </button>
                             </h2>
                         </div>
@@ -67,7 +69,6 @@ async function listar_hinos() {
                     </div>`
                 ;
             }
-            
             titulo_hino.textContent = data.msgs.nome_grupo;
             dropdown_hinos.innerHTML = html;
 
@@ -76,6 +77,61 @@ async function listar_hinos() {
         .catch(error => {
             console.error('Erro na requisição:', error.message);
         });
+    
+}
+
+function aumentar_tamanho_fonte() {
+    
+    if(tamanho_fonte_h5 < 2.5) {
+        
+        tamanho_fonte_h5 += 0.25;
+    
+        let h5_titulo_hino = document.getElementsByClassName("h5_titulo_hino");
+
+        Array.from(h5_titulo_hino).forEach(function(elemento) {
+            elemento.style.fontSize = `${tamanho_fonte_h5}rem`;
+        });
+    
+    }    
+
+    if(tamanho_fonte_div < 20) {
+
+        tamanho_fonte_div += 1;
+
+        let div_letra_hino = document.getElementsByClassName('card-body');
+    
+        Array.from(div_letra_hino).forEach(function(elemento) {
+            elemento.style.fontSize = `${tamanho_fonte_div}px`;
+        });
+
+    }
+}
+
+function diminuir_tamanho_fonte() {
+    
+    if(tamanho_fonte_h5 > 1.25) {
+        
+        tamanho_fonte_h5 -= 0.25;
+    
+        let h5_titulo_hino = document.getElementsByClassName("h5_titulo_hino");
+
+        Array.from(h5_titulo_hino).forEach(function(elemento) {
+            elemento.style.fontSize = `${tamanho_fonte_h5}rem`;
+        });
+    
+    } 
+    
+    if(tamanho_fonte_div > 16) {
+
+        tamanho_fonte_div -= 1;
+
+        let div_letra_hino = document.getElementsByClassName('card-body');
+    
+        Array.from(div_letra_hino).forEach(function(elemento) {
+            elemento.style.fontSize = `${tamanho_fonte_div}px`;
+        });
+
+    }
     
 }
 
